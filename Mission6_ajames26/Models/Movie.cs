@@ -15,7 +15,7 @@ namespace Mission6_ajames26.Models
         [Required]
         [MaxLength(5)]
         public string Rating { get; set; }
-        public bool? Edited { get; set; } = false;
+        public bool Edited { get; set; } = false;
         public string? LentTo { get; set; }
         [MaxLength(25)]
         public string? Notes { get; set; }

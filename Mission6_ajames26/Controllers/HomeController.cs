@@ -38,7 +38,7 @@ namespace Mission6_ajames26.Controllers
         public IActionResult EnterMovie(Movie movie)
         {
             Console.WriteLine($"Entering movie {movie.Title}");
-            return View();
+            return View("Confirmation", movie);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
