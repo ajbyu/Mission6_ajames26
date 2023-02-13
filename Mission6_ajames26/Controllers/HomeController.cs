@@ -12,10 +12,12 @@ namespace Mission6_ajames26.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly MovieContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MovieContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -37,8 +39,16 @@ namespace Mission6_ajames26.Controllers
         [HttpPost]
         public IActionResult EnterMovie(Movie movie)
         {
-            Console.WriteLine($"Entering movie {movie.Title}");
+            _context.Add(movie);
+            _context.SaveChanges();
             return View("Confirmation", movie);
+        }
+
+        [HttpGet]
+        public IActionResult ViewMovies()
+        {
+            var movies = _context.Movies;
+            return View(movies);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

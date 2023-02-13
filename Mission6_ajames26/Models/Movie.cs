@@ -4,10 +4,13 @@ namespace Mission6_ajames26.Models
 {
     public class Movie
     {
+        [Key]
         [Required]
-        public string Category { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Title { get; set; }
+        [Required]
+        public string Category { get; set; }
         [Required]
         public uint Year { get; set; }
         [Required]
